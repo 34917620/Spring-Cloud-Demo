@@ -1,0 +1,30 @@
+server:
+  port: 9184
+spring:
+  application:
+    name: Ms02
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 10.168.1.245:30848
+        namespace: dev
+        group: 测试
+        ip: eureka-server-02
+
+hystrix:
+  command:
+    default:
+      execution:
+        timeout:
+          enabled: true
+        isolation:
+          thread:
+            timeoutInMilliseconds: 30000
+#ribbon的超时时间
+ribbon:
+  ReadTimeout: 30000
+  ConnectTimeout: 30000
+logging:
+  file:
+    path: ./logs
+  config: classpath:logback-custom.xml

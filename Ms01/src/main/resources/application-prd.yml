@@ -1,0 +1,29 @@
+server:
+  port: 9183
+spring:
+  application:
+    name: Ms01
+  cloud:
+    nacos:
+      discovery:
+        server-addr: nacos-0.nacos-headless.szly-nacos.svc.cluster.local:8848,nacos-1.nacos-headless.szly-nacos.svc.cluster.local:8848
+        namespace: dev
+        group: 测试
+#       ip: 10.168.1.222
+hystrix:
+  command:
+    default:
+      execution:
+        timeout:
+          enabled: true
+        isolation:
+          thread:
+            timeoutInMilliseconds: 30000
+#ribbon的超时时间
+ribbon:
+  ReadTimeout: 30000
+  ConnectTimeout: 30000
+logging:
+  file:
+    path: ./logs
+  config: classpath:logback-custom.xml
